@@ -18,7 +18,6 @@ To inspect network requests, run the app, and [Chucker](https://github.com/Chuck
     * [Moshi Converter](https://github.com/square/retrofit/blob/master/retrofit-converters/moshi/README.md) A JSON serialization converter which uses Moshi
     * [Jetpack](https://developer.android.com/jetpack)
         * [Jetpack Compose](https://developer.android.com/jetpack/compose) - A modern toolkit for building native Android UI
-        * [Room](https://developer.android.com/topic/libraries/architecture/room) - a persistence library that provides an abstraction layer over SQLite.
         * [Lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle) - perform actions in response to a change in the lifecycle state.
         * [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - store and manage UI-related data lifecycle conscious manner and survives configuration change.
     * [Chucker](https://github.com/ChuckerTeam/chucker) An on-device Http inspector for Android and OkHttp.
@@ -34,7 +33,7 @@ To inspect network requests, run the app, and [Chucker](https://github.com/Chuck
 * Gradle
     * [Gradle Kotlin DSL](https://docs.gradle.org/current/userguide/kotlin_dsl.html) - An alternative syntax for writing Gradle build scripts using Koltin.
     * [Version Catalogs](https://developer.android.com/build/migrate-to-catalogs) - A scalable way of maintaining dependencies and plugins in a multi-module project.
-    * [Convention Plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) - A way to encapsulate and reuse common build configuration in Gradle, see [here](https://github.com/zawwinhtutdev/Tourist-News/tree/main/build-logic/convention/src/main/java)
+    * [Convention Plugins](https://docs.gradle.org/current/samples/sample_convention_plugins.html) - A way to encapsulate and reuse common build configuration in Gradle, see [here](https://github.com/zawwinhtutdev/Shoppy/tree/develop/build-logic/convention/src/main/java)
     * Plugins
         * [Ktlint](https://github.com/JLLeitschuh/ktlint-gradle) - creates convenient tasks in your Gradle project that run ktlint checks or do code auto format.
         * [Spotless](https://github.com/diffplug/spotless) - format Java, groovy, markdown, and license headers using gradle.
