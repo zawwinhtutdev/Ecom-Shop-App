@@ -13,7 +13,7 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
  * Configure base Kotlin with Android options
  */
 internal fun Project.configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
         compileSdk = 34
@@ -21,7 +21,7 @@ internal fun Project.configureKotlinAndroid(
             minSdk = 21
             buildTypes {
                 getByName("release") {
-                    isMinifyEnabled = true
+fun CommonExtension<*, *, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
                 }
                 getByName("debug") {
                     isMinifyEnabled = true

@@ -31,7 +31,7 @@
             <option value="$PROJECT_DIR$/testing" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
+        <option name="testRunner" value="CHOOSE_PER_TEST" />
       </GradleProjectSettings>
     </option>
   </component>
