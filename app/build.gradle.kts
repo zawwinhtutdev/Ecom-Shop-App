@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.danielwaiguru.shoppy"
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.danielwaiguru.shoppy"
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk = 21
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 

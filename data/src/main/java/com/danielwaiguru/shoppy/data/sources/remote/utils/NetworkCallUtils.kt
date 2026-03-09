@@ -8,7 +8,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import okio.IOException
 import retrofit2.HttpException
@@ -35,13 +35,15 @@ fun parseErrorBody(throwable: HttpException): ErrorResponse? = try {
     null
 }
 fun <T> flowSafeCall(
+    dispatcher: CoroutineDispatcher,
     block: suspend () -> T
-): Flow<ResultWrapper<T>> = flow<ResultWrapper<T>> {
-    emit(ResultWrapper.Success(block.invoke()))
-}.onStart {
+): Flow<ResultWrapper<T>> = flow {
     emit(ResultWrapper.Loading)
+    emit(ResultWrapper.Success(block.invoke()))
 }.catch { throwable ->
-    throwable.printStackTrace()
+    if (throwable is CancellationException) {
+        throw throwable
+    }
     when (throwable) {
         is HttpException -> {
             val errorResponse = parseErrorBody(throwable)
@@ -68,7 +70,7 @@ fun <T> flowSafeCall(
             }
         }
     }
-}
+}.flowOn(dispatcher)
 
 suspend fun <T> safeApiCall(
     dispatcher: CoroutineDispatcher,

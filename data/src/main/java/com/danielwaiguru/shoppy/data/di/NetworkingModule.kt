@@ -6,8 +6,6 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.danielwaiguru.shoppy.data.BuildConfig
 import com.danielwaiguru.shoppy.data.sources.remote.api.ShoppyApiService
 import com.danielwaiguru.shoppy.data.sources.remote.interceptors.HeadersInterceptor
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,16 +59,12 @@ internal object NetworkingModule {
 
     @Singleton
     @Provides
-    internal fun provideConverterFactory(): MoshiConverterFactory {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-        return MoshiConverterFactory.create(moshi).apply {
+    internal fun provideConverterFactory(): MoshiConverterFactory =
+        MoshiConverterFactory.create().apply {
             asLenient()
             failOnUnknown()
             withNullSerialization()
         }
-    }
 
     @Singleton
     @Provides
