@@ -1,5 +1,5 @@
 @file:Suppress("UnstableApiUsage")
-
+        compilerOptions {
 package com.danielwaiguru.shoppy.convention
 
 import com.android.build.api.dsl.CommonExtension
@@ -7,7 +7,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.provideDelegate
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import org.gradle.kotlin.dsl.withType
 
 /**
  * Configure base Kotlin with Android options
@@ -37,15 +37,15 @@ internal fun Project.configureKotlinAndroid(
             targetCompatibility = JavaVersion.VERSION_17
         }
 
-        kotlinOptions {
-            // Treat all Kotlin warnings as errors (disabled by default)
-            // Override by setting warningsAsErrors=true in your ~/.gradle/gradle.properties
-            val warningsAsErrors: String? by project
-            allWarningsAsErrors = warningsAsErrors.toBoolean()
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+        configureKotlin()
+fun Project.configureKotlin() {
+    tasks.withType<KotlinCompile>().configureEach {
 
-            freeCompilerArgs = freeCompilerArgs + listOf(
-                "-opt-in=kotlin.RequiresOptIn",
-                // Enable experimental coroutines APIs, including Flow
+            jvmTarget.set(JvmTarget.JVM_17)
+        }
+    }
                 "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
                 "-opt-in=kotlinx.coroutines.FlowPreview"
             )
