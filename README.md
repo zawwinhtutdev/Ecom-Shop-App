@@ -52,15 +52,6 @@ Before every commit, make sure you run the following bash script:
 ./codeAnalysis.sh
 ```
 
-## Testing
-The screenshots below show test reports for tests done on this repo
-
-#### Unit Tests
-<img src="/screenshots/unit_tests.png"/>
-
-#### UI Tests
-<img src="/screenshots/ui_tests.png"/>
-
 ## App Architecture
 A well-planned architecture is extremely important for any Android project; It makes it easier to maintain the app as the codebase grows and the team expands. This repo uses the MVVM pattern with clean architecture to have decoupled, testable, and maintainable code.
 MVVM separates views (Activities, Fragments, or Composables) from the app's business logic. However, as the codebase grows, ViewModels start bloating, and separation of responsibilities becomes hard hence the need to use MVVM with clean architecture. 
